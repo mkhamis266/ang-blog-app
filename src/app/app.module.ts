@@ -12,6 +12,9 @@ import { SinglePostComponent } from './pages/single-post/single-post.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { CommentListComponent } from './comments/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ContactComponent } from './pages/contact/contact.component';
     SinglePostComponent,
     TermsAndConditionsComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    SubscriptionFormComponent,
+    CommentFormComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
