@@ -6,13 +6,25 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { CategoryNavbarComponent } from './layouts/category-navbar/category-navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SingleCategoryComponent } from './pages/single-category/single-category.component';
+import { SinglePostComponent } from './pages/single-post/single-post.component';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CategoryNavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    SingleCategoryComponent,
+    SinglePostComponent,
+    TermsAndConditionsComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
