@@ -38,3 +38,18 @@ body {
 .bg-theme {
   background-color: var(--primary-color);
 }
+
+input[type="text"],
+input[type="email"] {
+  height: 60px;
+  width: 100%;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.btn-theme {
+  height: 58px;
+  border: none;
+  font-size: 13px;
+  background-color: var(--primary-color);
+}
