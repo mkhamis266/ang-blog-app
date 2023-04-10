@@ -18,7 +18,7 @@ export class CategoriesService {
           return actions.map((action) => {
             const data: Category = action.payload.doc.data() as Category;
             const id: string = action.payload.doc.id;
-            return { data, id };
+            return { id, data };
           });
         })
       );
