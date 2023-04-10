@@ -8,20 +8,19 @@
         </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-3 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-3 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-3 mt-3">
-        <app-post-card></app-post-card>
-      </div>
+    <div *ngIf="isFeaturedLoading; else featuredPostsList" class="row">
+      featured posts loading ...
     </div>
+    <ng-template #featuredPostsList>
+      <div class="row">
+        <div
+          *ngFor="let featuredPost of featuredPosts$ | async"
+          class="col-lg-3 mt-3"
+        >
+          <app-post-card [postData]="featuredPost"></app-post-card>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </section>
 <section class="container mt-5">
@@ -30,7 +29,7 @@
       <h2>Latest Posts</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-4 mt-3">
         <app-post-card></app-post-card>
       </div>
@@ -49,6 +48,6 @@
       <div class="col-lg-4 mt-3">
         <app-post-card></app-post-card>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
