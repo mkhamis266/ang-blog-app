@@ -1,9 +1,41 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
+import { Post } from '../models/post';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostsService {
+  constructor(private afs: AngularFirestore) {}
 
-  constructor() { }
+  getPosts() {
+    return this.afs
+      .collection('posts')
+      .snapshotChanges()
+      .pipe(
+        map((actions) => {
+          return actions.map((action) => {
+            const data: Post = action.payload.doc.data() as Post;
+            const id: string = action.payload.doc.id;
+            return { id, data };
+          });
+        })
+      );
+  }
+
+  getFeaturedPosts() {
+    return this.afs
+      .collection('posts', (ref) => ref.where('isFeatured', '==', true))
+      .snapshotChanges()
+      .pipe(
+        map((actions) => {
+          return actions.map((action) => {
+            const data: Post = action.payload.doc.data() as Post;
+            const id: string = action.payload.doc.id;
+            return { id, data };
+          });
+        })
+      );
+  }
 }
