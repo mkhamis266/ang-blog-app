@@ -8,8 +8,11 @@
         </p>
       </div>
     </div>
-    <div *ngIf="isFeaturedLoading; else featuredPostsList" class="row">
-      featured posts loading ...
+    <div
+      *ngIf="isFeaturedLoading; else featuredPostsList"
+      class="text-white text-center font-weight-bold"
+    >
+      <p>featured posts loading ...</p>
     </div>
     <ng-template #featuredPostsList>
       <div class="row">
