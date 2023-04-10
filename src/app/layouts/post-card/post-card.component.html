@@ -24,8 +24,7 @@
     </p>
 
     <small class="bg-light text-warning text-center ml-3"
-      >LAST UPDATED -
-      {{ postData.data.createdAt.toDate().toLocaleDateString() }}</small
+      >LAST UPDATED - {{ postData.data.createdAt.toMillis() | date }}</small
     >
   </div>
 </div>
