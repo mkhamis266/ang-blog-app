@@ -1,24 +1,31 @@
 <div class="card shadow-effect">
   <img
-    src="https://images.pexels.com/photos/13862328/pexels-photo-13862328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    alt="post-img"
-    class="card-img-top"
+    [src]="postData.data.postImage.URL"
+    alt="postData-img"
+    class="card-img-top img-fluid"
   />
   <div class="card-body">
-    <small class="bg-light text-danger text-center">Inspiring</small>
-    <small class="bg-light text-successful text-center ml-3">Featured</small>
-    <small class="bg-light text-info text-center ml-3">Views - 150,341</small>
+    <small class="bg-light text-danger text-center">{{
+      postData.data.category.category
+    }}</small>
+    <small
+      *ngIf="postData.data.isFeatured"
+      class="bg-light text-successful text-center ml-3"
+      >Featured</small
+    >
+    <small class="bg-light text-info text-center ml-3"
+      >Views - {{ postData.data.views }}</small
+    >
 
-    <h5 class="mt-1">How to start your blog form scratch?</h5>
+    <h5 class="mt-1">{{ postData.data.title }}</h5>
 
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae nisi,
-      rem officiis harum aliquid quod facere dolore libero impedit similique
-      illo laborum debitis culpa numquam, corrupti nemo assumenda, ea doloribus.
+      {{ postData.data.content }}
     </p>
 
     <small class="bg-light text-warning text-center ml-3"
-      >LAST UPDATED - SEP 20, 2022</small
+      >LAST UPDATED -
+      {{ postData.data.createdAt.toDate().toLocaleDateString() }}</small
     >
   </div>
 </div>
