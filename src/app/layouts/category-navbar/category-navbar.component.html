@@ -11,7 +11,9 @@
             *ngFor="let category of categories$ | async"
             class="nav-item ml-3"
           >
-            <a class="nav-link" href="#">{{ category.data.category }}</a>
+            <a class="nav-link" routerLink="./category/{{ category.id }}">{{
+              category.data.category
+            }}</a>
           </li>
         </ul>
       </ng-template>
