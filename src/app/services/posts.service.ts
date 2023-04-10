@@ -55,4 +55,21 @@ export class PostsService {
         })
       );
   }
+
+  getPostsByCategory(categoryId: string) {
+    return this.afs
+      .collection('posts', (ref) =>
+        ref.where('category.categoryId', '==', categoryId)
+      )
+      .snapshotChanges()
+      .pipe(
+        map((actions) => {
+          return actions.map((action) => {
+            const data: Post = action.payload.doc.data() as Post;
+            const id: string = action.payload.doc.id;
+            return { id, data };
+          });
+        })
+      );
+  }
 }
