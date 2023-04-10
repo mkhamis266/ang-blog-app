@@ -10,7 +10,7 @@ export class CategoriesService {
   constructor(private afs: AngularFirestore) {}
 
   getCategories() {
-    this.afs
+    return this.afs
       .collection('categories')
       .snapshotChanges()
       .pipe(
