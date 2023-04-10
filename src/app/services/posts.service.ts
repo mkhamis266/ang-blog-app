@@ -26,7 +26,9 @@ export class PostsService {
 
   getFeaturedPosts() {
     return this.afs
-      .collection('posts', (ref) => ref.where('isFeatured', '==', true))
+      .collection('posts', (ref) =>
+        ref.where('isFeatured', '==', true).limit(4)
+      )
       .snapshotChanges()
       .pipe(
         map((actions) => {
