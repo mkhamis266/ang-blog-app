@@ -10,8 +10,12 @@ import { CategoriesService } from 'src/app/service/categories.service';
 })
 export class CategoryNavbarComponent implements OnInit {
   categories$!: Observable<{ id: string; data: Category }[]>;
+  isLoading = true;
   constructor(private categoriesService: CategoriesService) {
     this.categories$ = this.categoriesService.getCategories();
+    this.categories$.subscribe(() => {
+      this.isLoading = false;
+    });
   }
 
   ngOnInit(): void {}

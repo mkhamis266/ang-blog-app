@@ -1,11 +1,20 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <div class="collapse navbar-collapse justify-content-center">
-      <ul class="navbar-nav">
-        <li *ngFor="let category of categories$ | async" class="nav-item ml-3">
-          <a class="nav-link" href="#">{{ category.data.category }}</a>
-        </li>
-      </ul>
+      <div *ngIf="isLoading; else categoryList">
+        <!-- show loading spinner or placeholder -->
+        Loading categories...
+      </div>
+      <ng-template #categoryList>
+        <ul class="navbar-nav">
+          <li
+            *ngFor="let category of categories$ | async"
+            class="nav-item ml-3"
+          >
+            <a class="nav-link" href="#">{{ category.data.category }}</a>
+          </li>
+        </ul>
+      </ng-template>
     </div>
   </div>
 </nav>
