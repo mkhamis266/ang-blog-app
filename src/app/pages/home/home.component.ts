@@ -10,11 +10,17 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class HomeComponent implements OnInit {
   featuredPosts$!: Observable<{ id: string; data: Post }[]>;
+  latestPosts$!: Observable<{ id: string; data: Post }[]>;
   isFeaturedLoading: boolean = true;
+  isLatestLoading: boolean = true;
   constructor(private postsService: PostsService) {
     this.featuredPosts$ = postsService.getFeaturedPosts();
+    this.latestPosts$ = postsService.getLatestPosts();
     this.postsService.getFeaturedPosts().subscribe((data) => {
       this.isFeaturedLoading = false;
+    });
+    this.postsService.getLatestPosts().subscribe((data) => {
+      this.isLatestLoading = false;
     });
   }
 

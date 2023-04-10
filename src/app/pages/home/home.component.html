@@ -32,25 +32,21 @@
       <h2>Latest Posts</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
-    <div class="row">
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-lg-4 mt-3">
-        <app-post-card></app-post-card>
-      </div>
+    <div
+      *ngIf="isLatestLoading; else latestPostsList"
+      class="text-white text-center font-weight-bold"
+    >
+      <p>latest posts loading ...</p>
     </div>
+    <ng-template #latestPostsList>
+      <div class="row">
+        <div
+          *ngFor="let latestPost of latestPosts$ | async"
+          class="col-lg-3 mt-3"
+        >
+          <app-post-card [postData]="latestPost"></app-post-card>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </section>
