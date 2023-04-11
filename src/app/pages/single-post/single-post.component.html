@@ -33,9 +33,15 @@
       <app-comment-list></app-comment-list>
     </div>
     <div class="col-md-3">
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
+      <div *ngIf="similarPostsLoading; else similarPostsList">
+        similar Posts Loading...
+      </div>
+      <ng-template #similarPostsList>
+        <app-post-card
+          *ngFor="let post of similarPosts$ | async"
+          [postData]="post"
+        ></app-post-card>
+      </ng-template>
     </div>
   </div>
 </div>
