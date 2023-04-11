@@ -25,9 +25,7 @@
 
             <h1 class="mt-3 mb-3">{{ postData.title }}</h1>
 
-            <div>
-              {{ postData.content }}
-            </div>
+            <div [innerHTML]="postData.content"></div>
           </div>
         </div>
       </ng-template>
