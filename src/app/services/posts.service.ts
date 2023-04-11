@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -71,5 +71,12 @@ export class PostsService {
           });
         })
       );
+  }
+
+  getPostById(id: string): Observable<Post> {
+    return this.afs
+      .collection('posts')
+      .doc(id)
+      .valueChanges() as Observable<Post>;
   }
 }
