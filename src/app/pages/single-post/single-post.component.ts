@@ -11,7 +11,8 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class SinglePostComponent implements OnInit {
   postId!: string;
-  postData$!: Observable<Post>;
+  postData!: Post;
+  postDataLoading = true;
   constructor(
     private route: ActivatedRoute,
     private postsService: PostsService
@@ -20,7 +21,10 @@ export class SinglePostComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.postId = params['id'];
-      this.postData$ = this.postsService.getPostById(this.postId);
+      this.postsService.getPostById(this.postId).subscribe((post) => {
+        this.postData = post;
+        this.postDataLoading = false;
+      });
     });
   }
 }

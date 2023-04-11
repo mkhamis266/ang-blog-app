@@ -1,71 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9">
-      <div class="card shadow-effect">
-        <img
-          src="https://images.pexels.com/photos/12509875/pexels-photo-12509875.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
-        <div class="card-body">
-          <small class="bg-light text-danger text-center">Inspiring</small>
-          <small class="bg-light text-successful text-center ml-2"
-            >Featured</small
-          >
-          <small class="bg-light text-info text-center ml-2"
-            >Views - 150,341</small
-          >
-          <small class="bg-light text-warning text-center ml-2"
-            >Last Updated - 14/3/2023</small
-          >
-
-          <h1 class="mt-3 mb-3">How to start your blog form scratch?</h1>
-
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius
-            maxime harum sunt mollitia similique delectus perferendis dolores
-            quis ullam veritatis esse, repellat temporibus quod tenetur adipisci
-            eaque aliquam aut. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nisi eius maxime harum sunt mollitia similique
-            delectus perferendis dolores quis ullam veritatis esse, repellat
-            temporibus quod tenetur adipisci eaque aliquam aut. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Nisi eius maxime harum
-            sunt mollitia similique delectus perferendis dolores quis ullam
-            veritatis esse, repellat temporibus quod tenetur adipisci eaque
-            aliquam aut. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Nisi eius maxime harum sunt mollitia similique delectus
-            perferendis dolores quis ullam veritatis esse, repellat temporibus
-            quod tenetur adipisci eaque aliquam aut. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Nisi eius maxime harum sunt mollitia
-            similique delectus perferendis dolores quis ullam veritatis esse,
-            repellat temporibus quod tenetur adipisci eaque aliquam aut. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Nisi eius maxime
-            harum sunt mollitia similique delectus perferendis dolores quis
-            ullam veritatis esse, repellat temporibus quod tenetur adipisci
-            eaque aliquam aut. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nisi eius maxime harum sunt mollitia similique
-            delectus perferendis dolores quis ullam veritatis esse, repellat
-            temporibus quod tenetur adipisci eaque aliquam aut. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Nisi eius maxime harum
-            sunt mollitia similique delectus perferendis dolores quis ullam
-            veritatis esse, repellat temporibus quod tenetur adipisci eaque
-            aliquam aut. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Nisi eius maxime harum sunt mollitia similique delectus
-            perferendis dolores quis ullam veritatis esse, repellat temporibus
-            quod tenetur adipisci eaque aliquam aut. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Nisi eius maxime harum sunt mollitia
-            similique delectus perferendis dolores quis ullam veritatis esse,
-            repellat temporibus quod tenetur adipisci eaque aliquam aut. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Nisi eius maxime
-            harum sunt mollitia similique delectus perferendis dolores quis
-            ullam veritatis esse, repellat temporibus quod tenetur adipisci
-            eaque aliquam aut. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nisi eius maxime harum sunt mollitia similique
-            delectus perferendis dolores quis ullam veritatis esse, repellat
-            temporibus quod tenetur adipisci eaque aliquam aut.
-          </p>
-        </div>
+      <div *ngIf="postDataLoading; else postContainer">
+        post Data loading...
       </div>
+      <ng-template #postContainer>
+        <div class="card shadow-effect">
+          <img [src]="postData.postImage.URL" alt="" />
+          <div class="card-body">
+            <small class="bg-light text-danger text-center">{{
+              postData.category.category
+            }}</small>
+            <small
+              *ngIf="postData.isFeatured"
+              class="bg-light text-successful text-center ml-2"
+              >Featured</small
+            >
+            <small class="bg-light text-info text-center ml-2"
+              >Views - {{ postData.views }}</small
+            >
+            <small class="bg-light text-warning text-center ml-2"
+              >Last Updated - {{ postData.createdAt.toMillis() | date }}</small
+            >
 
+            <h1 class="mt-3 mb-3">{{ postData.title }}</h1>
+
+            <div>
+              {{ postData.content }}
+            </div>
+          </div>
+        </div>
+      </ng-template>
       <app-comment-form></app-comment-form>
       <app-comment-list></app-comment-list>
     </div>
