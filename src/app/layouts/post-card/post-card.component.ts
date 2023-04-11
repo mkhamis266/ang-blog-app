@@ -9,7 +9,5 @@ import { Post } from 'src/app/models/post';
 export class PostCardComponent implements OnInit {
   constructor() {}
   @Input() postData!: { id: string; data: Post };
-  ngOnInit(): void {
-    console.log(this.postData);
-  }
+  ngOnInit(): void {}
 }
