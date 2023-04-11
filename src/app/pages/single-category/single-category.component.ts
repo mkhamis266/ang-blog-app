@@ -1,3 +1,4 @@
+import { Category } from './../../models/category';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +12,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class SingleCategoryComponent implements OnInit {
   categoryId!: string;
+  categoryName!: string;
   categoryPosts$!: Observable<{ id: string; data: Post }[]>;
   isLoading = true;
   constructor(
@@ -21,6 +23,7 @@ export class SingleCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.categoryId = params['id'];
+      this.categoryName = params['category'];
       this.categoryPosts$ = this.postsService.getPostsByCategory(
         this.categoryId
       );
