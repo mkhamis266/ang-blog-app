@@ -6,14 +6,25 @@
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore at
         accusantium omnis voluptates repudiandae dolor!
       </p>
-      <form class="form-inline mb-5 mt-5">
+      <form
+        class="form-inline mb-5 mt-5"
+        #subscriptionForm="ngForm"
+        (ngSubmit)="onSubmit(subscriptionForm)"
+      >
         <div class="form-group col-md-5">
           <input
             type="text"
             class="form-control shadow-effect"
             id="name"
             placeholder="Your Name"
+            name="name"
+            ngModel
+            required
+            #Name="ngModel"
           />
+          <div class="text-danger" *ngIf="Name.invalid && Name.touched">
+            <div *ngIf="Name.errors?.['required']">Name is required</div>
+          </div>
         </div>
         <div class="form-group col-md-5">
           <input
@@ -21,7 +32,16 @@
             class="form-control shadow-effect"
             id="email"
             placeholder="Email Address"
+            name="email"
+            ngModel
+            required
+            email
+            #Email="ngModel"
           />
+          <div class="text-danger" *ngIf="Email.invalid && Email.touched">
+            <div *ngIf="Email.errors?.['required']">Email is required</div>
+            <div *ngIf="Email.errors?.['email']">Please enter valid email</div>
+          </div>
         </div>
         <div class="col-md-2">
           <button class="btn btn-info btn-block btn-theme">SUBSCRIBE</button>
