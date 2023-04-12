@@ -4,6 +4,9 @@
 /* font family */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+// ngx-toastr.scss
+@import "~ngx-toastr/toastr.css";
+
 :root {
   --primary-color: #026467 !important;
   --secondary-color: #e5f5ea !important;
