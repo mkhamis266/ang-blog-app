@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root',
 })
-export class SubscriptionService {
+export class SubscriberService {
   constructor(private afs: AngularFirestore, private toastr: ToastrService) {}
 
   addSub(subscriptionData: Sub) {
