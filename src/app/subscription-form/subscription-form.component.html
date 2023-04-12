@@ -14,13 +14,14 @@
         <div class="form-group col-md-5">
           <input
             type="text"
-            class="form-control shadow-effect"
+            class="form-control"
             id="name"
             placeholder="Your Name"
             name="name"
             ngModel
             required
             #Name="ngModel"
+            [ngClass]="{ 'is-invalid': Name.invalid && Name.touched }"
           />
           <div class="text-danger" *ngIf="Name.invalid && Name.touched">
             <div *ngIf="Name.errors?.['required']">Name is required</div>
@@ -29,7 +30,7 @@
         <div class="form-group col-md-5">
           <input
             type="email"
-            class="form-control shadow-effect"
+            class="form-control"
             id="email"
             placeholder="Email Address"
             name="email"
@@ -37,6 +38,7 @@
             required
             email
             #Email="ngModel"
+            [ngClass]="{ 'is-invalid': Email.invalid && Email.touched }"
           />
           <div class="text-danger" *ngIf="Email.invalid && Email.touched">
             <div *ngIf="Email.errors?.['required']">Email is required</div>
@@ -44,7 +46,12 @@
           </div>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-info btn-block btn-theme">SUBSCRIBE</button>
+          <button
+            class="btn btn-info btn-block btn-theme"
+            [disabled]="subscriptionForm.invalid"
+          >
+            SUBSCRIBE
+          </button>
         </div>
       </form>
     </div>
