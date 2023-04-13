@@ -18,4 +18,10 @@ export class SubscriberService {
         this.toastr.success('Subscription added successfully');
       });
   }
+
+  checkSubs(email: string) {
+    return this.afs
+      .collection('subscriptions', (ref) => ref.where('email', '==', email))
+      .get();
+  }
 }
